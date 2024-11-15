@@ -21,9 +21,9 @@
 #  define BUFFER_SIZE 1000
 # endif
 
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strjoinfree(char **s1, char **s2);
+size_t	gnlxio_ft_strlen(const char *s);
+void	*gnlxio_ft_calloc(size_t nmemb, size_t size);
+char	*gnlxio_ft_strjoinfree(char **s1, char **s2);
 char	*get_next_line(int fd);
 char	**ft_readlines(int fd);
 

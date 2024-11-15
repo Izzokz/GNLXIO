@@ -12,7 +12,7 @@
 
 #include "gnlxio.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*gnlxio_ft_calloc(size_t nmemb, size_t size)
 {
 	void	*alloc;
 	size_t	i;
@@ -31,7 +31,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (alloc);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	gnlxio_ft_strlen(const char *str)
 {
 	size_t	len;
 
@@ -50,10 +50,10 @@ static size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	size_t	init_dest;
 	size_t	init_src;
 
-	i = ft_strlen((const char *)dest);
+	i = gnlxio_ft_strlen((const char *)dest);
 	j = 0;
 	init_dest = i;
-	init_src = ft_strlen(src);
+	init_src = gnlxio_ft_strlen(src);
 	if (size <= init_dest)
 		return (size + init_src);
 	while (src[j] && j < size - init_dest - 1)
@@ -66,15 +66,15 @@ static size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	return (init_dest + init_src);
 }
 
-char	*ft_strjoinfree(char **s1, char **s2)
+char	*gnlxio_ft_strjoinfree(char **s1, char **s2)
 {
 	size_t	len;
 	char	*new_str;
 
-	len = ft_strlen(*s1);
+	len = gnlxio_ft_strlen(*s1);
 	if (*s2)
-		len += ft_strlen(*s2);
-	new_str = ft_calloc(len + 1, 1);
+		len += gnlxio_ft_strlen(*s2);
+	new_str = gnlxio_ft_calloc(len + 1, 1);
 	if (!new_str)
 		return (NULL);
 	if (*s1)

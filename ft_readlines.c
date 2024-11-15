@@ -18,7 +18,7 @@ static char	*ft_strdup(const char *src)
 	int		len;
 	int		index;
 
-	len = ft_strlen(src);
+	len = gnlxio_ft_strlen(src);
 	dest = malloc(sizeof(char) * len + 1);
 	if (!dest)
 		return (dest);
@@ -59,11 +59,11 @@ static void	ft_realloc(char ***chain, int nmemb)
 	while ((*chain)[++i])
 		;
 	len = i;
-	temp = ft_calloc(len + 1, sizeof(char *));
+	temp = gnlxio_ft_calloc(len + 1, sizeof(char *));
 	if (!temp)
 		return ;
 	ft_chainshift(temp, *chain);
-	*chain = ft_calloc(len + nmemb + 1, sizeof(char *));
+	*chain = gnlxio_ft_calloc(len + nmemb + 1, sizeof(char *));
 	if (!(*chain))
 		return ;
 	ft_chainshift(*chain, temp);
@@ -75,7 +75,7 @@ char	**ft_readlines(int fd)
 	char	*line;
 	int		i;
 
-	lines = ft_calloc(2, sizeof(char *));
+	lines = gnlxio_ft_calloc(2, sizeof(char *));
 	line = get_next_line(fd);
 	i = -1;
 	while (line)
