@@ -2,7 +2,8 @@ NAME = gnlxio.a
 
 SRC = get_next_line.c \
 	get_next_line_utils.c \
-	ft_readlines.c
+	ft_readlines.c \
+	ft_free_rlines.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -17,10 +18,10 @@ $(NAME): $(OBJ)
 	$(CCA) -o $@ -c $^
 
 clean:
-		rm -f $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
