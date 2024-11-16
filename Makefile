@@ -1,9 +1,12 @@
 NAME = gnlxio.a
 
-SRC = get_next_line.c \
+SRC = gnlxio_ft_strdup.c \
+	get_next_line.c \
 	get_next_line_utils.c \
 	ft_readlines.c \
-	ft_free_rlines.c
+	ft_free_rlines.c \
+	ft_deline.c \
+	ft_rewrite_file.c
 
 OBJ = $(SRC:.c=.o)
 

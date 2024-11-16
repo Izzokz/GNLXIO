@@ -12,26 +12,6 @@
 
 #include "gnlxio.h"
 
-static char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		len;
-	int		index;
-
-	len = gnlxio_ft_strlen(src);
-	dest = malloc(sizeof(char) * len + 1);
-	if (!dest)
-		return (dest);
-	dest[len] = '\0';
-	index = 0;
-	while (index < len)
-	{
-		dest[index] = src[index];
-		index++;
-	}
-	return (dest);
-}
-
 static void	ft_chainshift(char **dest, char **src)
 {
 	int	i;
@@ -39,7 +19,7 @@ static void	ft_chainshift(char **dest, char **src)
 	i = -1;
 	while (src[++i])
 	{
-		dest[i] = ft_strdup(src[i]);
+		dest[i] = gnlxio_ft_strdup(src[i]);
 		free(src[i]);
 		src[i] = NULL;
 	}
@@ -80,7 +60,7 @@ char	**ft_readlines(int fd)
 	i = -1;
 	while (line)
 	{
-		lines[++i] = ft_strdup(line);
+		lines[++i] = gnlxio_ft_strdup(line);
 		ft_realloc(&lines, 1);
 		if (!lines)
 			return (NULL);
