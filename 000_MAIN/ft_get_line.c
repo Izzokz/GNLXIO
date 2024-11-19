@@ -28,6 +28,7 @@ char	*ft_get_line(const char *filename, int lineno)
 		return (NULL);
 	}
 	lines = ft_readlines(fd);
+	close(fd);
 	if (!lines)
 		return (NULL);
 	len = ft_rlines_len(lines);
