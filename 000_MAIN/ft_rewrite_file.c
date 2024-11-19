@@ -29,7 +29,7 @@ int	ft_rewrite_file(const char *filename, char **lines)
 	fd = open(filename, O_WRONLY | O_TRUNC);
 	if (fd < 0)
 	{
-		perror("Function open() failed");
+		perror("GNLXIO:ft_rewrite_file.c:29:open()");
 		return (-1);
 	}
 	i = -1;

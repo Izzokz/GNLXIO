@@ -24,7 +24,7 @@ char	*ft_get_line(const char *filename, int lineno)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Function open() failed");
+		perror("GNLXIO:ft_get_line.c:24:open()");
 		return (NULL);
 	}
 	lines = ft_readlines(fd);

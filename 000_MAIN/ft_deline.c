@@ -42,7 +42,7 @@ int	ft_deline(const char *filename, int lineno)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Function open() failed");
+		perror("GNLXIO:ft_deline.c:42:open()");
 		return (-1);
 	}
 	lines = ft_readlines(fd);

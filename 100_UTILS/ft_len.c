@@ -70,4 +70,3 @@ int	ft_file_size(const char *filename)
 	ft_free_rlines(&lines);
 	return (size);
 }
-
