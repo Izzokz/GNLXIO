@@ -21,7 +21,7 @@ static void	ft_putstr_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 }
 
-int	ft_rewrite_file(char *filename, char **lines)
+int	ft_rewrite_file(const char *filename, char **lines)
 {
 	int	fd;
 	int	i;

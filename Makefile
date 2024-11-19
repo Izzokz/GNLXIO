@@ -6,7 +6,10 @@ SRC = gnlxio_ft_strdup.c \
 	ft_readlines.c \
 	ft_free_rlines.c \
 	ft_deline.c \
-	ft_rewrite_file.c
+	ft_rewrite_file.c \
+	ft_get_line.c \
+	ft_len.c \
+	ft_fix_lineno.c
 
 OBJ = $(SRC:.c=.o)
 
