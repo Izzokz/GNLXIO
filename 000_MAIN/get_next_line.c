@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnlxio.h"
+#include "../gnlxio.h"
 
 static void	free_all(char **buffer, char **temp_str)
 {

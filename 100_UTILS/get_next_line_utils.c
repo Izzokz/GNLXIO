@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnlxio.h"
+#include "../gnlxio.h"
 
 void	*gnlxio_ft_calloc(size_t nmemb, size_t size)
 {

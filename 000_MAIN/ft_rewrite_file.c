@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_line.c                                      :+:      :+:    :+:   */
+/*   ft_rewrite_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 11:59:35 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:59:36 by kzhen-cl         ###   ########.fr       */
+/*   Created: 2024/11/16 13:10:09 by kzhen-cl          #+#    #+#             */
+/*   Updated: 2024/11/16 13:25:41 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnlxio.h"
+#include "../gnlxio.h"
 
-char	*ft_get_line(const char *filename, int lineno)
+static void	ft_putstr_fd(char *s, int fd)
 {
-	char	**lines;
-	char	*line;
-	int		len;
-	int		fd;
+	int	i;
 
-	if (lineno == 0)
-		return (NULL);
-	fd = open(filename, O_RDONLY);
+	i = -1;
+	while (s[++i])
+		write(fd, &s[i], 1);
+}
+
+int	ft_rewrite_file(const char *filename, char **lines)
+{
+	int	fd;
+	int	i;
+
+	fd = open(filename, O_WRONLY | O_TRUNC);
 	if (fd < 0)
 	{
 		perror("Function open() failed");
-		return (NULL);
+		return (-1);
 	}
-	lines = ft_readlines(fd);
-	if (!lines)
-		return (NULL);
-	len = ft_rlines_len(lines);
-	ft_fix_lineno(&lineno, len);
-	line = gnlxio_ft_strdup(lines[lineno - 1]);
-	ft_free_rlines(&lines);
-	return (line);
+	i = -1;
+	while (lines[++i])
+		ft_putstr_fd(lines[i], fd);
+	close(fd);
+	return (i);
 }

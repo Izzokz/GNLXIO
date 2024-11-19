@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_rlines.c                                   :+:      :+:    :+:   */
+/*   gnlxio_ft_strdup.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 10:16:43 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/11/16 10:16:45 by kzhen-cl         ###   ########.fr       */
+/*   Created: 2024/11/16 13:13:56 by kzhen-cl          #+#    #+#             */
+/*   Updated: 2024/11/16 13:27:48 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnlxio.h"
+#include "../gnlxio.h"
 
-void	ft_free_rlines(char ***lines)
+char	*gnlxio_ft_strdup(const char *src)
 {
-	int	i;
+	char	*dest;
+	int		len;
+	int		index;
 
-	if (!lines || !(*lines))
-		return ;
-	i = -1;
-	while ((*lines)[++i])
+	len = gnlxio_ft_strlen(src);
+	dest = malloc(sizeof(char) * len + 1);
+	if (!dest)
+		return (dest);
+	dest[len] = '\0';
+	index = 0;
+	while (index < len)
 	{
-		free((*lines)[i]);
-		(*lines)[i] = NULL;
+		dest[index] = src[index];
+		index++;
 	}
-	free(*lines);
-	*lines = NULL;
+	return (dest);
 }

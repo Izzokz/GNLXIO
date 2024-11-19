@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnlxio.h"
+#include "../gnlxio.h"
 
 static void	ft_chainshift(char **dest, char **src)
 {
