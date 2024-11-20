@@ -7,7 +7,8 @@ MAINSRC = $(MAINDIR)get_next_line.c \
 	$(MAINDIR)ft_readlines.c \
 	$(MAINDIR)ft_deline.c \
 	$(MAINDIR)ft_rewrite_file.c \
-	$(MAINDIR)ft_get_line.c
+	$(MAINDIR)ft_get_line.c \
+	$(MAINDIR)ft_readfile.c
 UTILSSRC = $(UTILDIR)gnlxio_ft_strdup.c \
 	$(UTILDIR)get_next_line_utils.c \
 	$(UTILDIR)ft_free_rlines.c \

@@ -34,6 +34,7 @@ int		ft_file_len(const char *filename);
 int		ft_file_size(const char *filename);
 char	*get_next_line(int fd);
 char	**ft_readlines(int fd);
+char	**ft_readfile(char *filename);
 void	ft_free_rlines(char ***lines);
 int		ft_rewrite_file(const char *filename, char **lines);
 int		ft_deline(const char *filename, int lineno);
