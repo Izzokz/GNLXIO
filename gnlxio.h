@@ -51,6 +51,7 @@ int		ft_rlines_len(char **rlines);
 int		ft_rlines_size(char **rlines);
 int		ft_file_len(const char *filename);
 int		ft_file_size(const char *filename);
+void	ft_rlines_cutendl(char ***rlines);
 char	*get_next_line(int fd);
 char	**ft_readlines(int fd);
 char	**ft_readfile(const char *filename);
