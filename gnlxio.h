@@ -46,6 +46,7 @@ size_t	gnlxio_ft_strlen(const char *s);
 char	*gnlxio_ft_strdup(const char *src);
 void	*gnlxio_ft_calloc(size_t nmemb, size_t size);
 char	*gnlxio_ft_strjoinfree(char **s1, char **s2);
+char	**ft_rlines_dup(char **rlines);
 int		ft_rlines_len(char **rlines);
 int		ft_rlines_size(char **rlines);
 int		ft_file_len(const char *filename);
