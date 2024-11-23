@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readfile.c                                      :+:      :+:    :+:   */
+/*   gnlxio_ft_strcmp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 17:19:07 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/11/20 17:19:08 by kzhen-cl         ###   ########.fr       */
+/*   Created: 2024/11/23 12:30:13 by kzhen-cl          #+#    #+#             */
+/*   Updated: 2024/11/23 12:30:15 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../gnlxio.h"
 
-char	**ft_readfile(const char *filename)
+int	gnlxio_ft_strcmp(char	*string1, char *string2)
 {
-	char	**lines;
-	int		fd;
+	int	index;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	index = 0;
+	while (string1[index] == string2[index])
 	{
-		perror("GNLXIO:ft_readfile.c:20:open()");
-		return (NULL);
+		if ((string1[index] == '\0' && string2[index] == '\0')
+			|| (string1[index] != string2[index]))
+			break ;
+		index++;
 	}
-	lines = ft_readlines(fd);
-	close(fd);
-	return (lines);
+	return (string1[index] - string2[index]);
 }

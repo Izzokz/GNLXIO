@@ -8,12 +8,15 @@ MAINSRC = $(MAINDIR)get_next_line.c \
 	$(MAINDIR)ft_deline.c \
 	$(MAINDIR)ft_rewrite_file.c \
 	$(MAINDIR)ft_get_line.c \
-	$(MAINDIR)ft_readfile.c
+	$(MAINDIR)ft_readfile.c \
+	$(MAINDIR)ft_replace.c
 UTILSSRC = $(UTILDIR)gnlxio_ft_strdup.c \
 	$(UTILDIR)get_next_line_utils.c \
 	$(UTILDIR)ft_free_rlines.c \
 	$(UTILDIR)ft_len.c \
-	$(UTILDIR)ft_fix_lineno.c
+	$(UTILDIR)ft_fix_lineno.c \
+	$(UTILDIR)gnlxio_ft_strnstr.c \
+	$(UTILDIR)gnlxio_ft_strcmp.c
 
 OBJDIR = 666_OBJ/
 OBJ = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(MAINSRC) $(UTILSSRC)))

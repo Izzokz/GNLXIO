@@ -23,7 +23,25 @@
 #  define BUFFER_SIZE 1000
 # endif
 
+typedef struct s_ints
+{
+	int	count;
+	int	count1;
+	int	count2;
+	int	i;
+	int	j;
+	int	k;
+	int	len;
+	int	len1;
+	int	len2;
+	int	x;
+	int	y;
+	int	z;
+}	t_ints;
+
 void	ft_fix_lineno(int *lineno, int len);
+int		gnlxio_ft_strcmp(char *string1, char *string2);
+char	*gnlxio_ft_strnstr(const char *big, const char *little, size_t len);
 size_t	gnlxio_ft_strlen(const char *s);
 char	*gnlxio_ft_strdup(const char *src);
 void	*gnlxio_ft_calloc(size_t nmemb, size_t size);
@@ -34,10 +52,12 @@ int		ft_file_len(const char *filename);
 int		ft_file_size(const char *filename);
 char	*get_next_line(int fd);
 char	**ft_readlines(int fd);
-char	**ft_readfile(char *filename);
+char	**ft_readfile(const char *filename);
 void	ft_free_rlines(char ***lines);
 int		ft_rewrite_file(const char *filename, char **lines);
 int		ft_deline(const char *filename, int lineno);
 char	*ft_get_line(const char *filename, int lineno);
+int		ft_replace_rlines(char ***rlines, char *from, char *to);
+int		ft_replace_file(const char *filename, char *from, char *to);
 
 #endif

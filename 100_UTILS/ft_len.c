@@ -50,6 +50,11 @@ int	ft_file_len(const char *filename)
 	int		len;
 
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("GNLXIO:ft_len.c:52:open()");
+		return (-1);
+	}
 	lines = ft_readlines(fd);
 	close(fd);
 	len = ft_rlines_len(lines);
@@ -64,6 +69,11 @@ int	ft_file_size(const char *filename)
 	int		size;
 
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("GNLXIO:ft_len.c:71:open()");
+		return (-1);
+	}
 	lines = ft_readlines(fd);
 	close(fd);
 	size = ft_rlines_size(lines);
