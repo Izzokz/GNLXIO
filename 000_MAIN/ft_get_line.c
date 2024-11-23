@@ -29,7 +29,7 @@ char	*ft_get_line(const char *filename, int lineno)
 	}
 	lines = ft_readlines(fd);
 	close(fd);
-	if (!lines)
+	if (!lines || !(lines[0]))
 		return (NULL);
 	len = ft_rlines_len(lines);
 	ft_fix_lineno(&lineno, len);

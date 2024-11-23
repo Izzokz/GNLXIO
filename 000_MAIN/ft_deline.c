@@ -36,7 +36,7 @@ int	ft_deline(const char *filename, int lineno)
 	int		len;
 
 	lines = ft_readfile(filename);
-	if (!lines)
+	if (!lines || !(lines[0]))
 		return (-1);
 	len = ft_rlines_len(lines);
 	ft_fix_lineno(&lineno, len);
