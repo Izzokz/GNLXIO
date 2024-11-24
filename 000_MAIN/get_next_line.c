@@ -89,11 +89,11 @@ char	*get_next_line(int fd)
 	static char	*temp_str[1024];
 	char		*buffer;
 
-	if (!temp_str[fd])
-		temp_str[fd] = NULL;
 	buffer = NULL;
+	if (fd < 0 || fd > 1024)
+		return (buffer);
 	buffer = gnlxio_ft_calloc(1, 1);
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0 || !buffer)
+	if (BUFFER_SIZE <= 0 || !buffer)
 	{
 		free_all(&buffer, &temp_str[fd]);
 		return (buffer);
