@@ -17,19 +17,11 @@ char	*ft_get_line(const char *filename, int lineno)
 	char	**lines;
 	char	*line;
 	int		len;
-	int		fd;
 
 	if (lineno == 0)
 		return (NULL);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("GNLXIO:ft_get_line.c:24:open()");
-		return (NULL);
-	}
-	lines = ft_readlines(fd);
-	close(fd);
-	if (!lines || !(lines[0]))
+	lines = ft_readfile(filename);
+	if (invalid_rlines_free(&lines) == -1)
 		return (NULL);
 	len = ft_rlines_len(lines);
 	ft_fix_lineno(&lineno, len);

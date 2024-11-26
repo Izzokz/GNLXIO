@@ -23,6 +23,26 @@
 #  define BUFFER_SIZE 1000
 # endif
 
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
+
+# ifndef A_TRUNC
+#  define A_TRUNC 2147483648
+# endif
+
+# ifndef A_BEGIN
+#  define A_BEGIN 1
+# endif
+
+# ifndef A_END
+#  define A_END -1
+# endif
+
 typedef struct s_ints
 {
 	int	count;
@@ -40,6 +60,7 @@ typedef struct s_ints
 }	t_ints;
 
 void	ft_fix_lineno(int *lineno, int len);
+void	gnlxio_ft_putstr_fd(char *s, int fd);
 int		gnlxio_ft_strcmp(char *string1, char *string2);
 char	*gnlxio_ft_strnstr(const char *big, const char *little, size_t len);
 size_t	gnlxio_ft_strlen(const char *s);
@@ -47,6 +68,7 @@ char	*gnlxio_ft_strdup(const char *src);
 void	*gnlxio_ft_calloc(size_t nmemb, size_t size);
 char	*gnlxio_ft_strjoinfree(char **s1, char **s2);
 char	**ft_rlines_dup(char **rlines);
+void	ft_realloc_rlines(char ***rlines, int nmemb);
 int		ft_rlines_len(char **rlines);
 int		ft_rlines_size(char **rlines);
 int		ft_file_len(const char *filename);
@@ -66,6 +88,8 @@ char	*ft_get_line(const char *filename, int lineno);
 int		ft_replace_rlines(char ***rlines, char *from, char *to);
 int		ft_replace_file(const char *filename, char *from, char *to);
 int		ft_gen_file(char *filename, char *perm);
+int		ft_trunc(char *filename);
+int		ft_add_line(char *filename, char *line, long long method);
 char	*ft_input(void);
 
 #endif
