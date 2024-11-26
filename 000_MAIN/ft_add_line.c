@@ -15,7 +15,8 @@
 static void	put_new_line(char *line, int fd)
 {
 	gnlxio_ft_putstr_fd(line, fd);
-	if (line[-1] != '\n')
+	if (line && (gnlxio_ft_strlen(line) == 0
+	|| line[gnlxio_ft_strlen(line) - 1] != '\n'))
 		gnlxio_ft_putstr_fd("\n", fd);
 }
 
@@ -27,7 +28,7 @@ static int	put_line(char *filename, char *line, int lineno, char ***rlines)
 	fd = open(filename, O_WRONLY);
 	if (fd < 0)
 	{
-		perror("GNLXIO:ft_add_line.c:27:open()");
+		perror("GNLXIO:ft_add_line.c:28:open()");
 		ft_free_rlines(rlines);
 		return (-1);
 	}
@@ -42,6 +43,7 @@ static int	put_line(char *filename, char *line, int lineno, char ***rlines)
 	if (i + 1 == lineno)
 		put_new_line(line, fd);
 	ft_free_rlines(rlines);
+	close(fd);
 	return (1);
 }
 
@@ -55,7 +57,7 @@ int	ft_add_line(char *filename, char *line, long long method)
 	{
 		if (ft_trunc(filename) == -1)
 		{
-			perror("GNLXIO:ft_add_line.c:56:ft_trunc()");
+			perror("GNLXIO:ft_add_line.c:58:ft_trunc()");
 			ft_free_rlines(&rlines);
 			return (-1);
 		}
@@ -64,7 +66,7 @@ int	ft_add_line(char *filename, char *line, long long method)
 	rlines = ft_readfile(filename);
 	if (!rlines)
 	{
-		perror("GNLXIO:ft_add_line.c:64:ft_readfile()");
+		perror("GNLXIO:ft_add_line.c:66:ft_readfile()");
 		return (-1);
 	}
 	if (method < INT_MIN || method > INT_MAX)
