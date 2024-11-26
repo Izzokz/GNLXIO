@@ -65,6 +65,7 @@ int		ft_deline(const char *filename, int lineno);
 char	*ft_get_line(const char *filename, int lineno);
 int		ft_replace_rlines(char ***rlines, char *from, char *to);
 int		ft_replace_file(const char *filename, char *from, char *to);
+int		ft_gen_file(char *filename, char *perm);
 char	*ft_input(void);
 
 #endif
