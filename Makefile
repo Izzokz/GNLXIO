@@ -63,10 +63,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(eval PROGRESS := 0)
 	@ar -rc $(NAME) $(OBJ)
-	@printf "\n\033[36m\033[1mGNLXIO: \033[1;97mCompilation Complete !\033[0m\n"
+	@printf "\n\033[36m\033[1mGNLXIO: \033[1;97mBuild Complete !\033[0m\n"
 
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
+	@printf "\033[36m\033[1mGNLXIO: \033[1;37m666_OBJ/ Generated !\033[0m\n"
 
 $(OBJDIR)%.o: $(MAINDIR)%.c | $(OBJDIR)
 	@$(CCA) -o $@ -c $<
@@ -78,7 +79,7 @@ $(OBJDIR)%.o: $(UTILDIR)%.c | $(OBJDIR)
 
 clean:
 	@rm -f $(OBJ)
-	@printf "\033[36m\033[1mGNLXIO: \033[37m666_OBJ Cleaned !\033[0m\n"
+	@printf "\033[36m\033[1mGNLXIO: \033[37m666_OBJ/ Cleaned !\033[0m\n"
 
 fclean:
 	@rm -f $(OBJ) $(NAME)
