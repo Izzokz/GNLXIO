@@ -35,7 +35,7 @@ CCA = cc -Wall -Wextra -Werror -g3
 TOTAL_FILES = $(words $(OBJ))
 PROGRESS = 0
 TERM_WIDTH = $(shell tput cols)
-BAR_WIDTH = $(shell echo $$(( ($(TERM_WIDTH) - 27) > 60 ? 50 : ($(TERM_WIDTH) - 12) - 10 )))
+BAR_WIDTH = $(shell echo $$(( ($(TERM_WIDTH) - 30) > 60 ? 50 : ($(TERM_WIDTH) - 20) - 10 )))
 COLORS = "\033[4;30m\033[4;31m\033[4;32m\033[4;33m\033[4;34m\033[4;35m\033[4;36m\033[1;30m\033[1;31m\033[1;32m\033[1;33m\033[1;34m\033[1;35m\033[1;36m\033[1;90m\033[1;91m\033[1;92m\033[1;93m\033[1;94m\033[1;95m\033[1;96m\033[1;97m"
 CHARACTERS = "!?@0&:.%=+"
 RESET_COLOR = "\033[0m"
