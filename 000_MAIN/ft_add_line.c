@@ -16,7 +16,7 @@ static void	put_new_line(char *line, int fd)
 {
 	gnlxio_ft_putstr_fd(line, fd);
 	if (line && (gnlxio_ft_strlen(line) == 0
-	|| line[gnlxio_ft_strlen(line) - 1] != '\n'))
+			|| line[gnlxio_ft_strlen(line) - 1] != '\n'))
 		gnlxio_ft_putstr_fd("\n", fd);
 }
 
