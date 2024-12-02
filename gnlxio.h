@@ -77,6 +77,7 @@ int		zombie_rlines(char **rlines);
 int		invalid_rlines(char **rlines);
 int		zombie_rlines_free(char ***rlines);
 int		invalid_rlines_free(char ***rlines);
+void	ft_rline_cutendl(char **rline);
 void	ft_rlines_cutendl(char ***rlines);
 char	*get_next_line(int fd);
 char	**ft_readlines(int fd);

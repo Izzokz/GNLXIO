@@ -12,6 +12,17 @@
 
 #include "../gnlxio.h"
 
+void	ft_rline_cutendl(char **rline)
+{
+	int	len;
+
+	len = gnlxio_ft_strlen(*rline);
+	if (len == 0)
+		;
+	else if ((*rline)[len - 1] == '\n')
+		(*rline)[len - 1] = '\0';
+}
+
 void	ft_rlines_cutendl(char ***rlines)
 {
 	t_ints	ints;
@@ -20,11 +31,5 @@ void	ft_rlines_cutendl(char ***rlines)
 		return ;
 	ints.i = -1;
 	while ((*rlines)[++(ints.i)])
-	{
-		ints.len = gnlxio_ft_strlen((*rlines)[ints.i]);
-		if (ints.len == 0)
-			;
-		else if ((*rlines)[ints.i][ints.len - 1] == '\n')
-			(*rlines)[ints.i][ints.len - 1] = '\0';
-	}
+		ft_rline_cutendl(&((*rlines)[ints.i]));
 }
