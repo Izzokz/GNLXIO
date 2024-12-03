@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "t_ints.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
@@ -42,22 +43,6 @@
 # ifndef A_END
 #  define A_END -1
 # endif
-
-typedef struct s_ints
-{
-	int	count;
-	int	count1;
-	int	count2;
-	int	i;
-	int	j;
-	int	k;
-	int	len;
-	int	len1;
-	int	len2;
-	int	x;
-	int	y;
-	int	z;
-}	t_ints;
 
 void	ft_fix_lineno(int *lineno, int len);
 void	gnlxio_ft_putstr_fd(char *s, int fd);
