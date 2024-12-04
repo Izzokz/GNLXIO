@@ -29,8 +29,9 @@ UTILSSRC = $(UTILDIR)gnlxio_ft_strdup.c \
 
 OBJDIR = 666_OBJ/
 OBJ = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(MAINSRC) $(UTILSSRC)))
+DEP = $(patsubst %.c,$(OBJDIR)%.d,$(notdir $(MAINSRC) $(UTILSSRC)))
 
-CCA = cc -Wall -Wextra -Werror -g3
+CCA = cc -Wall -Wextra -Werror -g3 -MP -MMD
 
 TOTAL_FILES = $(words $(OBJ))
 PROGRESS = 0
@@ -57,6 +58,8 @@ define PRINT_PROGRESS
 	done; \
 	printf "\033[1;32m +] \033[34m$$PERCENT%%\033[0m\r"
 endef
+
+MAKEFLAGS += --no-print-directory
 
 all: $(NAME)
 
@@ -85,6 +88,9 @@ fclean:
 	@rm -f $(OBJ) $(NAME)
 	@printf "\033[36m\033[1mGNLXIO: \033[37mCleaned !\033[0m\n"
 
-re: fclean all
+re: fclean
+	@$(MAKE)
 
 .PHONY: all clean fclean re
+
+-include $(DEP)
