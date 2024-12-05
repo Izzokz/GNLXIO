@@ -30,6 +30,11 @@ typedef struct s_ints
 	int	fd;
 	int	fd1;
 	int	fd2;
+	int	width;
+	int	height;
+	int	tmp;
+	int	tmp1;
+	int	tmp2;
 }	t_ints;
 
 #endif
