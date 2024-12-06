@@ -27,3 +27,16 @@ void	ft_free_rlines(t_rlines *rlines)
 	free(*rlines);
 	*rlines = NULL;
 }
+
+void	ft_free_slines(t_slines *slines)
+{
+	int	i;
+
+	if (!slines || !(*slines))
+		return ;
+	i = -1;
+	while ((*slines)[++i])
+		ft_free_rlines(&(*slines)[i]);
+	free(*slines);
+	*slines = NULL;
+}

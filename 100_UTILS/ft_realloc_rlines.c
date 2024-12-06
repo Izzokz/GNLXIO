@@ -26,7 +26,6 @@ static void	ft_chainshift(char **dest, char **src)
 	fail = 0;
 	while (src[++i])
 	{
-		dest[i] = NULL;
 		if (!fail)
 			dest[i] = gnlxio_ft_strdup(src[i]);
 		if (!dest[i])
@@ -34,31 +33,64 @@ static void	ft_chainshift(char **dest, char **src)
 		free(src[i]);
 		src[i] = NULL;
 	}
-	free(src);
+	if (src)
+		free(src);
 	src = NULL;
 }
 
 void	ft_realloc_rlines(t_rlines *chain, int nmemb)
 {
-	int			i;
 	int			len;
 	t_rlines	temp;
 
 	if (!chain || !(*chain) || nmemb <= 0)
 		return ;
-	i = -1;
-	while ((*chain)[++i])
+	len = -1;
+	while ((*chain)[++len])
 		;
-	len = i;
-	temp = gnlxio_ft_calloc(len + 1, sizeof(char *));
+	temp = gnlxio_ft_calloc(len + nmemb + 1, sizeof(char *));
 	if (!temp)
 		return ;
 	ft_chainshift(temp, *chain);
-	*chain = gnlxio_ft_calloc(len + nmemb + 1, sizeof(char *));
-	if (!(*chain))
-	{
-		ft_free_rlines(&temp);
+	*chain = temp;
+	(*chain)[len + nmemb] = '\0';
+}
+
+static void	ft_rlines_chainshift(t_rlines *dest, t_rlines *src)
+{
+	int	i;
+	int	fail;
+
+	if (!dest || !src)
 		return ;
+	i = -1;
+	fail = 0;
+	while (src[++i])
+	{
+		if (!fail)
+			ft_chainshift(&(*dest)[i], &(*src)[i]);
+		if (!dest[i])
+			fail = 1;
 	}
-	ft_chainshift(*chain, temp);
+	ft_free_rlines(src);
+}
+
+void	ft_realloc_slines(t_slines *chain, int nmemb)
+{
+	int			i;
+	int			len;
+	t_slines	temp;
+
+	if (!chain || !(*chain) || nmemb <= 0)
+		return ;
+	while ((*chain)[++i])
+		;
+	len = i;
+	temp = gnlxio_ft_calloc(len + nmemb + 1, sizeof(t_rlines));
+	if (!temp)
+		return ;
+	ft_rlines_chainshift(temp, *chain);
+	ft_free_slines(chain);
+	*chain = temp;
+	(*chain)[len + nmemb] = '\0';
 }

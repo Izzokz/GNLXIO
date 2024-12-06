@@ -44,7 +44,11 @@
 #  define A_END -1
 # endif
 
+/*Read lines*/
 typedef char**	t_rlines;
+
+/*SUPER LINES... Or just split rlines*/
+typedef char***	t_slines;
 
 void		ft_fix_lineno(int *lineno, int len);
 void		gnlxio_ft_putstr_fd(char *s, int fd);
@@ -54,8 +58,11 @@ size_t		gnlxio_ft_strlen(const char *s);
 char		*gnlxio_ft_strdup(const char *src);
 void		*gnlxio_ft_calloc(size_t nmemb, size_t size);
 char		*gnlxio_ft_strjoinfree(char **s1, char **s2);
+char		**gnlxio_ft_split(char *line, char *sep);
+t_slines	ft_split_rlines(t_rlines rlines, char *sep);
 t_rlines	ft_rlines_dup(t_rlines rlines);
 void		ft_realloc_rlines(t_rlines *rlines, int nmemb);
+void		ft_realloc_slines(t_slines *slines, int nmemb);
 int			ft_rlines_len(t_rlines rlines);
 int			ft_rlines_size(t_rlines rlines);
 int			ft_file_len(const char *filename);
@@ -70,6 +77,7 @@ char		*get_next_line(int fd);
 t_rlines	ft_readlines(int fd);
 t_rlines	ft_readfile(const char *filename);
 void		ft_free_rlines(t_rlines *rlines);
+void		ft_free_slines(t_slines *slines);
 int			ft_rewrite_file(const char *filename, t_rlines lines);
 int			ft_deline(const char *filename, int lineno);
 char		*ft_get_line(const char *filename, int lineno);
