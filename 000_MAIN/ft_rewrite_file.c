@@ -22,7 +22,7 @@ int	ft_rewrite_file(const char *filename, t_rlines lines)
 	fd = open(filename, O_WRONLY | O_TRUNC);
 	if (fd < 0)
 	{
-		perror("GNLXIO:ft_rewrite_file.c:29:open()");
+		perror("GNLXIO:ft_rewrite_file.c:22:open()");
 		return (-1);
 	}
 	i = -1;

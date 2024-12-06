@@ -27,3 +27,14 @@ t_rlines	ft_readfile(const char *filename)
 	close(fd);
 	return (lines);
 }
+
+t_slines	ft_readfile_split(const char *filename, char *sep)
+{
+	t_slines	slines;
+	t_rlines	rlines;
+
+	rlines = ft_readfile(filename);
+	slines = ft_split_rlines(rlines, sep);
+	ft_free_rlines(&rlines);
+	return (slines);
+}

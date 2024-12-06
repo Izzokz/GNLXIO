@@ -33,3 +33,14 @@ void	ft_rlines_cutendl(t_rlines *rlines)
 	while ((*rlines)[++(ints.i)])
 		ft_rline_cutendl(&((*rlines)[ints.i]));
 }
+
+void	ft_slines_cutendl(t_slines *slines)
+{
+	t_ints	i;
+
+	if (!slines || !(*slines))
+		return ;
+	i.i = -1;
+	while ((*slines)[++(i.i)])
+		ft_rlines_cutendl(&((*slines)[i.i]));
+}
