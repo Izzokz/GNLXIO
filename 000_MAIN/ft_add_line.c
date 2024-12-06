@@ -20,7 +20,7 @@ static void	put_new_line(char *line, int fd)
 		gnlxio_ft_putstr_fd("\n", fd);
 }
 
-static int	put_line(char *filename, char *line, int lineno, char ***rlines)
+static int	put_line(char *filename, char *line, int lineno, t_rlines *rlines)
 {
 	int	i;
 	int	fd;
@@ -49,7 +49,7 @@ static int	put_line(char *filename, char *line, int lineno, char ***rlines)
 
 int	ft_add_line(char *filename, char *line, long long method)
 {
-	char	**rlines;
+	t_rlines	rlines;
 
 	if (!filename)
 		return (-1);

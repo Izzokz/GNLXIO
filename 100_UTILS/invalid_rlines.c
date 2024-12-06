@@ -15,7 +15,7 @@
 /*
 Zombie means rlines have been malloc'd but are empty
 */
-int	zombie_rlines(char **rlines)
+int	zombie_rlines(t_rlines rlines)
 {
 	return (rlines && !rlines[0]);
 }
@@ -23,7 +23,7 @@ int	zombie_rlines(char **rlines)
 /*
 Invalid means rlines are zombies or NULL
 */
-int	invalid_rlines(char **rlines)
+int	invalid_rlines(t_rlines rlines)
 {
 	return (!rlines || zombie_rlines(rlines));
 }
@@ -32,7 +32,7 @@ int	invalid_rlines(char **rlines)
 If rlines are zombies, free them
 Prefer use invalid version as ft_free_rlines() does not free NULL pointers
 */
-int	zombie_rlines_free(char ***rlines)
+int	zombie_rlines_free(t_rlines *rlines)
 {
 	if (rlines)
 	{
@@ -48,7 +48,7 @@ int	zombie_rlines_free(char ***rlines)
 /*
 If rlines are invalid, try to free them
 */
-int	invalid_rlines_free(char ***rlines)
+int	invalid_rlines_free(t_rlines *rlines)
 {
 	if (rlines)
 	{

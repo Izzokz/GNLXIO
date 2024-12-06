@@ -12,11 +12,11 @@
 
 #include "../gnlxio.h"
 
-static char	**ft_delete_line(int lineno, char ***chain, int len)
+static t_rlines	ft_delete_line(int lineno, t_rlines *chain, int len)
 {
-	int		i;
-	int		j;
-	char	**new_chain;
+	int			i;
+	int			j;
+	t_rlines	new_chain;
 
 	if (!(*chain))
 		return (NULL);
@@ -32,8 +32,8 @@ static char	**ft_delete_line(int lineno, char ***chain, int len)
 
 int	ft_deline(const char *filename, int lineno)
 {
-	char	**lines;
-	int		len;
+	t_rlines	lines;
+	int			len;
 
 	lines = ft_readfile(filename);
 	if (!lines || !(lines[0]))

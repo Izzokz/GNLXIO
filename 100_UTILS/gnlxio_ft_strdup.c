@@ -23,11 +23,8 @@ char	*gnlxio_ft_strdup(const char *src)
 	if (!dest)
 		return (dest);
 	dest[len] = '\0';
-	index = 0;
-	while (index < len)
-	{
+	index = -1;
+	while (++index < len)
 		dest[index] = src[index];
-		index++;
-	}
 	return (dest);
 }

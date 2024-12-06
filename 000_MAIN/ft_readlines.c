@@ -12,11 +12,11 @@
 
 #include "../gnlxio.h"
 
-char	**ft_readlines(int fd)
+t_rlines	ft_readlines(int fd)
 {
-	char	**lines;
-	char	*line;
-	int		i;
+	t_rlines	lines;
+	char		*line;
+	int			i;
 
 	lines = gnlxio_ft_calloc(2, sizeof(char *));
 	if (!lines)

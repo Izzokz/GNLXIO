@@ -12,7 +12,7 @@
 
 #include "../gnlxio.h"
 
-int	ft_rewrite_file(const char *filename, char **lines)
+int	ft_rewrite_file(const char *filename, t_rlines lines)
 {
 	int	fd;
 	int	i;

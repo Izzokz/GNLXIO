@@ -12,11 +12,11 @@
 
 #include "../gnlxio.h"
 
-char	**ft_rlines_dup(char **rlines)
+t_rlines	ft_rlines_dup(t_rlines rlines)
 {
-	char	**new_lines;
-	int		len;
-	int		i;
+	t_rlines	new_lines;
+	int			len;
+	int			i;
 
 	len = ft_rlines_len(rlines);
 	new_lines = gnlxio_ft_calloc(len + 1, sizeof(char *));

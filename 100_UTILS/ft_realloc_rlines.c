@@ -38,13 +38,13 @@ static void	ft_chainshift(char **dest, char **src)
 	src = NULL;
 }
 
-void	ft_realloc_rlines(char ***chain, int nmemb)
+void	ft_realloc_rlines(t_rlines *chain, int nmemb)
 {
-	int		i;
-	int		len;
-	char	**temp;
+	int			i;
+	int			len;
+	t_rlines	temp;
 
-	if (!chain || !(*chain) || nmemb < 0)
+	if (!chain || !(*chain) || nmemb <= 0)
 		return ;
 	i = -1;
 	while ((*chain)[++i])

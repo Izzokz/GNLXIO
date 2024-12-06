@@ -12,7 +12,7 @@
 
 #include "../gnlxio.h"
 
-int	ft_rlines_size(char **rlines)
+int	ft_rlines_size(t_rlines rlines)
 {
 	int	i;
 	int	j;
@@ -31,7 +31,7 @@ int	ft_rlines_size(char **rlines)
 	return (len);
 }
 
-int	ft_rlines_len(char **rlines)
+int	ft_rlines_len(t_rlines rlines)
 {
 	int	i;
 
@@ -45,9 +45,9 @@ int	ft_rlines_len(char **rlines)
 
 int	ft_file_len(const char *filename)
 {
-	char	**lines;
-	int		fd;
-	int		len;
+	t_rlines	lines;
+	int			fd;
+	int			len;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -64,9 +64,9 @@ int	ft_file_len(const char *filename)
 
 int	ft_file_size(const char *filename)
 {
-	char	**lines;
-	int		fd;
-	int		size;
+	t_rlines	lines;
+	int			fd;
+	int			size;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)

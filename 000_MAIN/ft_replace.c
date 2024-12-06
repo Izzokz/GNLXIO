@@ -16,22 +16,26 @@ static int	ft_realloc(char **line, int len)
 {
 	char	*temp;
 	int		i;
-	int		final_len;
+	int		current_len;
+	int		new_len;
 
-	if (!line || !(*line) || !len)
+	if (!line || !(*line) || len == 0)
 		return (0);
-	final_len = gnlxio_ft_strlen(*line) + len;
-	temp = gnlxio_ft_calloc(final_len + 2, sizeof(char));
+	current_len = gnlxio_ft_strlen(*line);
+	new_len = current_len + len;
+	temp = gnlxio_ft_calloc(new_len + 2, sizeof(char));
 	if (!temp)
 	{
-		perror("GNLXIO:ft_replace.c:24:gnlxio_ft_calloc()");
+		perror("GNLXIO:ft_replace.c:26:gnlxio_ft_calloc()");
 		return (0);
 	}
 	i = -1;
-	while (++i < final_len && (*line)[i])
+	while (++i < new_len && i < current_len)
 		temp[i] = (*line)[i];
 	free(*line);
 	*line = temp;
+	if (new_len < 0)
+		(*line)[new_len] = '\0';
 	return (len);
 }
 
@@ -59,13 +63,18 @@ static void	ft_replace(char **rline, char *from, char *to, t_ints *ints)
 			ft_expand_line(rline, to, ints);
 		}
 		else
+		{
+			ft_realloc(rline, 1);
 			(*rline)[++(ints->j)] = temp[ints->i];
+		}
 	}
+	ft_realloc(rline, 2);
 	(*rline)[++(ints->j)] = '\n';
+	(*rline)[++(ints->j)] = '\0';
 	free(temp);
 }
 
-int	ft_replace_rlines(char ***rlines, char *from, char *to)
+int	ft_replace_rlines(t_rlines *rlines, char *from, char *to)
 {
 	int		i;
 	t_ints	ints;
@@ -90,8 +99,8 @@ int	ft_replace_rlines(char ***rlines, char *from, char *to)
 
 int	ft_replace_file(const char *filename, char *from, char *to)
 {
-	char	**rlines;
-	int		count;
+	t_rlines	rlines;
+	int			count;
 
 	if (!from || !gnlxio_ft_strlen(from) || !gnlxio_ft_strcmp(from, to))
 		return (-1);

@@ -14,9 +14,9 @@
 
 char	*ft_get_line(const char *filename, int lineno)
 {
-	char	**lines;
-	char	*line;
-	int		len;
+	t_rlines	lines;
+	char		*line;
+	int			len;
 
 	if (lineno == 0)
 		return (NULL);

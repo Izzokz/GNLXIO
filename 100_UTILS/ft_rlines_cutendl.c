@@ -12,7 +12,7 @@
 
 #include "../gnlxio.h"
 
-void	ft_rline_cutendl(char **rline)
+void	ft_rline_cutendl(t_rlines rline)
 {
 	int	len;
 
@@ -23,7 +23,7 @@ void	ft_rline_cutendl(char **rline)
 		(*rline)[len - 1] = '\0';
 }
 
-void	ft_rlines_cutendl(char ***rlines)
+void	ft_rlines_cutendl(t_rlines *rlines)
 {
 	t_ints	ints;
 
