@@ -57,6 +57,7 @@ int	invalid_rlines_free(t_rlines *rlines)
 			ft_free_rlines(rlines);
 			return (1);
 		}
+		return (0);
 	}
-	return (0);
+	return (1);
 }

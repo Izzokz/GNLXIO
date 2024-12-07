@@ -44,6 +44,7 @@ int	invalid_slines_free(t_slines *slines)
 			ft_free_slines(slines);
 			return (1);
 		}
+		return (0);
 	}
-	return (0);
+	return (1);
 }
