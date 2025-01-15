@@ -53,7 +53,6 @@ void	ft_realloc_rlines(t_rlines *chain, int nmemb)
 		return ;
 	ft_chainshift(temp, *chain);
 	*chain = temp;
-	(*chain)[len + nmemb] = NULL;
 }
 
 static void	ft_rlines_chainshift(t_rlines *dest, t_rlines *src)
@@ -91,5 +90,4 @@ void	ft_realloc_slines(t_slines *chain, int nmemb)
 	ft_rlines_chainshift(temp, *chain);
 	ft_free_slines(chain);
 	*chain = temp;
-	(*chain)[len + nmemb] = NULL;
 }
