@@ -23,14 +23,15 @@ UTILSSRC = $(UTILDIR)gnlxio_ft_strdup.c \
 	$(UTILDIR)gnlxio_ft_strnstr.c \
 	$(UTILDIR)gnlxio_ft_strcmp.c \
 	$(UTILDIR)ft_rlines_dup.c \
-	$(UTILDIR)ft_rlines_cutendl.c \
+	$(UTILDIR)ft_cutendl.c \
 	$(UTILDIR)invalid_rlines.c \
 	$(UTILDIR)invalid_slines.c \
 	$(UTILDIR)ft_trunc.c \
-	$(UTILDIR)ft_realloc_rlines.c \
+	$(UTILDIR)ft_realloc.c \
 	$(UTILDIR)ft_split_rlines.c \
 	$(UTILDIR)gnlxio_ft_split.c \
-	$(UTILDIR)in_rlines.c
+	$(UTILDIR)in_rlines.c \
+	$(UTILDIR)ft_add.c
 
 OBJDIR = 666_OBJ/
 OBJ = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(MAINSRC) $(UTILSSRC)))

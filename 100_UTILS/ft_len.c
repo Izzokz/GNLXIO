@@ -6,7 +6,7 @@
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:46:36 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:46:37 by kzhen-cl         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:42:04 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_rlines_size(t_rlines rlines)
 	int	len;
 
 	if (!rlines)
-		return (0);
+		return (-1);
 	len = 0;
 	i = -1;
 	while (rlines[++i])
@@ -36,9 +36,21 @@ int	ft_rlines_len(t_rlines rlines)
 	int	i;
 
 	if (!rlines)
-		return (0);
+		return (-1);
 	i = -1;
 	while (rlines[++i])
+		;
+	return (i);
+}
+
+int	ft_slines_rlen(t_slines slines)
+{
+	int	i;
+
+	if (!slines)
+		return (-1);
+	i = -1;
+	while (slines[++i])
 		;
 	return (i);
 }

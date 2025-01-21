@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_rlines.c                                :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kzhen-cl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:12:07 by kzhen-cl          #+#    #+#             */
-/*   Updated: 2024/11/26 14:16:30 by kzhen-cl         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:42:11 by kzhen-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ void	ft_realloc_slines(t_slines *chain, int nmemb)
 	if (!temp)
 		return ;
 	ft_rlines_chainshift(temp, *chain);
-	ft_free_slines(chain);
 	*chain = temp;
 }
