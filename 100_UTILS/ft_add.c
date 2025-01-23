@@ -12,14 +12,19 @@
 
 #include "../gnlxio.h"
 
-static void	fix_index(int *index, int *max)
+static void	ft_fix_index(int *index, int *max)
 {
+	int	minus;
+
+	minus = 0;
 	if (*index == 0)
+	{
+		(*max)++;
 		return ;
+	}
 	if (*index > 0)
-		(*index)++;
-	ft_fix_lineno(index, *max);
-	(*max)++;
+		(*index) += ++minus;
+	ft_fix_lineno(index, ++(*max));
 	(*index)--;
 }
 
@@ -38,7 +43,7 @@ int	ft_rlines_add(t_rlines *rlines, char *line, int index)
 	char	*tmp_line;
 
 	i.len = ft_rlines_len(*rlines);
-	fix_index(&index, &i.len);
+	ft_fix_index(&index, &i.len);
 	ft_realloc_rlines(rlines, 1);
 	if (!rlines || !(*rlines))
 		return (-1);
@@ -76,7 +81,7 @@ int	ft_slines_add(t_slines *slines, t_rlines rlines, int index)
 	t_rlines	tmp_rlines;
 
 	i.len = ft_slines_rlen(*slines);
-	fix_index(&index, &i.len);
+	ft_fix_index(&index, &i.len);
 	ft_realloc_slines(slines, 1);
 	if (!slines || !(*slines))
 		return (-1);

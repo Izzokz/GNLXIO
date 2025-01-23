@@ -31,7 +31,8 @@ UTILSSRC = $(UTILDIR)gnlxio_ft_strdup.c \
 	$(UTILDIR)ft_split_rlines.c \
 	$(UTILDIR)gnlxio_ft_split.c \
 	$(UTILDIR)in_rlines.c \
-	$(UTILDIR)ft_add.c
+	$(UTILDIR)ft_add.c \
+	$(UTILDIR)ft_pop.c
 
 OBJDIR = 666_OBJ/
 OBJ = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(MAINSRC) $(UTILSSRC)))
