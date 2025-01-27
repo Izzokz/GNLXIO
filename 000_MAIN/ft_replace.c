@@ -36,11 +36,13 @@ static int	ft_realloc(char **line, int len)
 	*line = temp;
 	if (new_len < 0)
 		(*line)[new_len] = '\0';
-	return (len);
+	return (1);
 }
 
 static void	ft_expand_line(char **rline, char *to, t_ints *ints)
 {
+	if (ints->tmp == -1)
+		return ;
 	ints->i += ints->len1 - 1;
 	ints->k = -1;
 	while (++(ints->k) < ints->len2)
@@ -48,30 +50,33 @@ static void	ft_expand_line(char **rline, char *to, t_ints *ints)
 	(ints->count)++;
 }
 
-static void	ft_replace(char **rline, char *from, char *to, t_ints *ints)
+static int	ft_replace(char **rline, char *from, char *to, t_ints *ints)
 {
 	char	*temp;
 
 	temp = gnlxio_ft_strdup(*rline);
 	if (!temp)
-		return ;
-	while (temp[++(ints->i)] && temp[ints->i] != '\n')
+		return (-1);
+	while (temp[++(ints->i)])
 	{
 		if (gnlxio_ft_strnstr((temp + ints->i), from, ints->len1))
 		{
-			ft_realloc(rline, ints->len2 - ints->len1);
+			if (!ft_realloc(rline, ints->len2 - ints->len1))
+				ints->tmp = -1;
 			ft_expand_line(rline, to, ints);
 		}
 		else
 		{
-			ft_realloc(rline, 1);
+			if (!ft_realloc(rline, 1))
+			{
+				ints->tmp = -1;
+				break ;
+			}
 			(*rline)[++(ints->j)] = temp[ints->i];
 		}
 	}
-	ft_realloc(rline, 2);
-	(*rline)[++(ints->j)] = '\n';
-	(*rline)[++(ints->j)] = '\0';
 	free(temp);
+	return (ints->tmp);
 }
 
 int	ft_replace_rlines(t_rlines *rlines, char *from, char *to)
@@ -79,11 +84,12 @@ int	ft_replace_rlines(t_rlines *rlines, char *from, char *to)
 	int		i;
 	t_ints	ints;
 
+	ints.tmp = 0;
+	if (!to)
+		to = "";
 	if (!(*rlines) || !from || !gnlxio_ft_strlen(from)
 		|| !gnlxio_ft_strcmp(from, to))
 		return (-1);
-	if (!to)
-		to = "";
 	ints.count = 0;
 	ints.len1 = gnlxio_ft_strlen(from);
 	ints.len2 = gnlxio_ft_strlen(to);
@@ -92,7 +98,8 @@ int	ft_replace_rlines(t_rlines *rlines, char *from, char *to)
 	{
 		ints.i = -1;
 		ints.j = -1;
-		ft_replace(&(*rlines)[i], from, to, &ints);
+		if (ft_replace(&(*rlines)[i], from, to, &ints) == -1)
+			return (-1);
 	}
 	return (ints.count);
 }
