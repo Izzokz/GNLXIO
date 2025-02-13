@@ -21,10 +21,7 @@ int	ft_rewrite_file(const char *filename, t_rlines lines)
 		return (-1);
 	fd = open(filename, O_WRONLY | O_TRUNC);
 	if (fd < 0)
-	{
-		perror("GNLXIO:ft_rewrite_file.c:22:open()");
 		return (-1);
-	}
 	i = -1;
 	while (lines[++i])
 		gnlxio_ft_putstr_fd(lines[i], fd);

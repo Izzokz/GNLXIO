@@ -28,7 +28,6 @@ static int	put_line(char *filename, char *line, int lineno, t_rlines *rlines)
 	fd = open(filename, O_WRONLY);
 	if (fd < 0)
 	{
-		perror("GNLXIO:ft_add_line.c:28:open()");
 		ft_free_rlines(rlines);
 		return (-1);
 	}
@@ -56,19 +55,12 @@ int	ft_add_line(char *filename, char *line, long long method)
 	if (method == A_TRUNC)
 	{
 		if (ft_trunc(filename) == -1)
-		{
-			perror("GNLXIO:ft_add_line.c:58:ft_trunc()");
-			ft_free_rlines(&rlines);
 			return (-1);
-		}
 		method = 1;
 	}
 	rlines = ft_readfile(filename);
 	if (!rlines)
-	{
-		perror("GNLXIO:ft_add_line.c:66:ft_readfile()");
 		return (-1);
-	}
 	if (method < INT_MIN || method > INT_MAX)
 		return (-1);
 	return (put_line(filename, line, (int)method, &rlines) == -1);

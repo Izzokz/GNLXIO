@@ -18,10 +18,7 @@ int	ft_trunc(char *filename)
 
 	fd = open(filename, O_TRUNC | O_WRONLY);
 	if (fd < 0)
-	{
-		perror("GNLXIO:ft_trunc.c:19:open()");
 		return (-1);
-	}
 	close(fd);
 	return (1);
 }

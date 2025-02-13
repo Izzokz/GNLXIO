@@ -28,10 +28,7 @@ t_rlines	ft_readlines(int fd)
 		lines[++i] = gnlxio_ft_strdup(line);
 		ft_realloc_rlines(&lines, 1);
 		if (invalid_rlines_free(&lines) == -1)
-		{
-			perror("GNLXIO:ft_readlines.c:29:ft_realloc_rlines()");
 			return (NULL);
-		}
 		free(line);
 		line = get_next_line(fd);
 	}

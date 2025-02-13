@@ -84,15 +84,9 @@ static int	split_loop(char **filename_prefix, t_slines *slines)
 		new_filename = gnlxio_ft_strjoinfree(&(char *){ft_itoa(i)},
 				&(char *){gnlxio_ft_strdup(*filename_prefix)});
 		if (!new_filename)
-		{
-			perror("GNLXIO:ft_split_file.c:70:gnlxio_ft_strjoinfree()");
 			break ;
-		}
 		if (ft_gen_file(new_filename, "0744") == -1)
-		{
-			perror("GNLXIO:ft_split_file.c:77:ft_gen_file()");
 			break ;
-		}
 		ft_rewrite_file(new_filename, (*slines)[i]);
 		free_all(NULL, NULL, &new_filename);
 	}
@@ -107,15 +101,11 @@ int	ft_split_file(const char *filename, char *sep)
 
 	slines = ft_readfile_split(filename, sep);
 	if (invalid_slines_free(&slines))
-	{
-		perror("GNLXIO:ft_split_file.c:94:ft_readfile_split()");
 		return (0);
-	}
 	prefix = gnlxio_ft_strjoinfree(&(char *){gnlxio_ft_strdup("_spl_")},
 			&(char *){gnlxio_ft_strdup(filename)});
 	if (!prefix)
 	{
-		perror("GNLXIO:ft_split_file.c:100:gnlxio_ft_strjoinfree()");
 		ft_free_slines(&slines);
 		return (0);
 	}

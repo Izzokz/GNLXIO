@@ -19,10 +19,7 @@ t_rlines	ft_readfile(const char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		perror("GNLXIO:ft_readfile.c:20:open()");
 		return (NULL);
-	}
 	lines = ft_readlines(fd);
 	close(fd);
 	return (lines);

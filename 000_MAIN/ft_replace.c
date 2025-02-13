@@ -25,10 +25,7 @@ static int	ft_realloc(char **line, int len)
 	new_len = current_len + len;
 	temp = gnlxio_ft_calloc(new_len + 2, sizeof(char));
 	if (!temp)
-	{
-		perror("GNLXIO:ft_replace.c:26:gnlxio_ft_calloc()");
 		return (0);
-	}
 	i = -1;
 	while (++i < new_len && i < current_len)
 		temp[i] = (*line)[i];

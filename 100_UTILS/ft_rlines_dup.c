@@ -23,17 +23,13 @@ t_rlines	ft_rlines_dup(t_rlines rlines)
 	len = ft_rlines_len(rlines);
 	new_lines = gnlxio_ft_calloc(len + 1, sizeof(char *));
 	if (!new_lines)
-	{
-		perror("GNLXIO:ft_rlines_dup.c:22:gnlxio_ft_calloc()");
 		return (NULL);
-	}
 	i = -1;
 	while (rlines[++i])
 	{
 		new_lines[i] = gnlxio_ft_strdup(rlines[i]);
 		if (!new_lines[i])
 		{
-			perror("GNLXIO:ft_rlines_dup.c:31:gnlxio_ft_calloc()");
 			ft_free_rlines(&new_lines);
 			return (NULL);
 		}

@@ -67,10 +67,7 @@ int	ft_gen_file(char *filename, char *perm)
 		return (-1);
 	fd = open(filename, O_CREAT, oth | grp | usr);
 	if (fd < 0)
-	{
-		perror("GNLXIO:ft_gen_file.c:19:open()");
 		return (-1);
-	}
 	close(fd);
 	return (1);
 }

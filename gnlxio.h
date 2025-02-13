@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include "t_ints.h"
 
 # ifndef BUFFER_SIZE
