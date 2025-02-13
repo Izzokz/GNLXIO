@@ -21,7 +21,7 @@ char	*ft_get_line(const char *filename, int lineno)
 	if (lineno == 0)
 		return (NULL);
 	lines = ft_readfile(filename);
-	if (invalid_rlines_free(&lines) == -1)
+	if (invalid_rlines_free(&lines))
 		return (NULL);
 	len = ft_rlines_len(lines);
 	ft_fix_lineno(&lineno, len);
