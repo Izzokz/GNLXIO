@@ -48,7 +48,7 @@ int	ft_rlines_add(t_rlines *rlines, char *line, int index)
 	ft_realloc_rlines(rlines, 1);
 	if (!rlines || !(*rlines))
 		return (-1);
-	i = (t_ints){.count = 0, .i = -1};
+	i = (t_ints){.count = 0, .i = -1, .len = i.len};
 	while (++(i.i) < i.len)
 	{
 		if (i.i == index || i.count)
