@@ -42,13 +42,13 @@ int	ft_rlines_add(t_rlines *rlines, char *line, int index)
 	t_ints	i;
 	char	*tmp_line;
 
+	tmp_line = NULL;
 	i.len = ft_rlines_len(*rlines);
 	ft_fix_index(&index, &i.len);
 	ft_realloc_rlines(rlines, 1);
 	if (!rlines || !(*rlines))
 		return (-1);
-	i.count = 0;
-	i.i = -1;
+	i = (t_ints){.count = 0, .i = -1};
 	while (++(i.i) < i.len)
 	{
 		if (i.i == index || i.count)
