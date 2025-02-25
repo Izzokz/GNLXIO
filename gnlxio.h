@@ -39,6 +39,10 @@
 #  define A_BEGIN 1
 # endif
 
+# ifndef A_BOF
+#  define A_BOF 0
+# endif
+
 # ifndef A_END
 #  define A_END -1
 # endif
