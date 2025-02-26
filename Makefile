@@ -24,6 +24,7 @@ UTILSSRC = $(UTILDIR)gnlxio_ft_strdup.c \
 	$(UTILDIR)gnlxio_ft_strcmp.c \
 	$(UTILDIR)ft_rlines_dup.c \
 	$(UTILDIR)ft_cutendl.c \
+	$(UTILDIR)ft_addendl.c \
 	$(UTILDIR)invalid_rlines.c \
 	$(UTILDIR)invalid_slines.c \
 	$(UTILDIR)ft_trunc.c \

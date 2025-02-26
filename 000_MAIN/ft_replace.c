@@ -12,7 +12,7 @@
 
 #include "../gnlxio.h"
 
-static int	ft_realloc(char **line, int len)
+int	gnlxio_ft_realloc(char **line, int len)
 {
 	char	*temp;
 	int		i;
@@ -20,12 +20,12 @@ static int	ft_realloc(char **line, int len)
 	int		new_len;
 
 	if (!line || !(*line) || len == 0)
-		return (0);
+		return (-1);
 	current_len = gnlxio_ft_strlen(*line);
 	new_len = current_len + len;
 	temp = gnlxio_ft_calloc(new_len + 2, sizeof(char));
 	if (!temp)
-		return (0);
+		return (-1);
 	i = -1;
 	while (++i < new_len && i < current_len)
 		temp[i] = (*line)[i];
@@ -58,13 +58,13 @@ static int	ft_replace(char **rline, char *from, char *to, t_ints *ints)
 	{
 		if (gnlxio_ft_strnstr((temp + ints->i), from, ints->len1))
 		{
-			if (!ft_realloc(rline, ints->len2 - ints->len1))
+			if (gnlxio_ft_realloc(rline, ints->len2 - ints->len1) == -1)
 				ints->tmp = -1;
 			ft_expand_line(rline, to, ints);
 		}
 		else
 		{
-			if (!ft_realloc(rline, 1))
+			if (gnlxio_ft_realloc(rline, 1) == -1)
 			{
 				ints->tmp = -1;
 				break ;
