@@ -14,40 +14,64 @@
 
 static int	usr_perm(char *perm)
 {
-	if (perm[1] == '7')
+	if (*(perm + 1) == '7')
 		return (S_IRWXU);
-	if (perm[1] == '4')
+	if (*(perm + 1) == '6')
+		return (S_IRUSR | S_IWUSR);
+	if (*(perm + 1) == '5')
+		return (S_IRUSR | S_IXUSR);
+	if (*(perm + 1) == '4')
 		return (S_IRUSR);
-	if (perm[1] == '2')
+	if (*(perm + 1) == '3')
+		return (S_IWUSR | S_IXUSR);
+	if (*(perm + 1) == '2')
 		return (S_IWUSR);
-	if (perm[1] == '1')
+	if (*(perm + 1) == '1')
 		return (S_IXUSR);
+	if (*(perm + 1) == '0')
+		return (0);
 	return (-1);
 }
 
 static int	grp_perm(char *perm)
 {
-	if (perm[2] == '7')
+	if (*(perm + 2) == '7')
 		return (S_IRWXG);
-	if (perm[2] == '4')
+	if (*(perm + 2) == '6')
+		return (S_IRGRP | S_IWGRP);
+	if (*(perm + 2) == '5')
+		return (S_IRGRP | S_IXGRP);
+	if (*(perm + 2) == '4')
 		return (S_IRGRP);
-	if (perm[2] == '2')
+	if (*(perm + 2) == '3')
+		return (S_IWGRP | S_IXGRP);
+	if (*(perm + 2) == '2')
 		return (S_IWGRP);
-	if (perm[2] == '1')
+	if (*(perm + 2) == '1')
 		return (S_IXGRP);
+	if (*(perm + 2) == '0')
+		return (0);
 	return (-1);
 }
 
 static int	oth_perm(char *perm)
 {
-	if (perm[3] == '7')
+	if (*(perm + 3) == '7')
 		return (S_IRWXO);
-	if (perm[3] == '4')
+	if (*(perm + 3) == '6')
+		return (S_IROTH | S_IWOTH);
+	if (*(perm + 3) == '5')
+		return (S_IROTH | S_IXOTH);
+	if (*(perm + 3) == '4')
 		return (S_IROTH);
-	if (perm[3] == '2')
+	if (*(perm + 3) == '3')
+		return (S_IWOTH | S_IXOTH);
+	if (*(perm + 3) == '2')
 		return (S_IWOTH);
-	if (perm[3] == '1')
+	if (*(perm + 3) == '1')
 		return (S_IXOTH);
+	if (*(perm + 3) == '0')
+		return (0);
 	return (-1);
 }
 
@@ -65,7 +89,7 @@ int	ft_gen_file(char *filename, char *perm)
 	oth = oth_perm(perm);
 	if (usr == -1 || grp == -1 || oth == -1)
 		return (-1);
-	fd = open(filename, O_CREAT, oth | grp | usr);
+	fd = open(filename, O_CREAT, usr | grp | oth);
 	if (fd < 0)
 		return (-1);
 	close(fd);
