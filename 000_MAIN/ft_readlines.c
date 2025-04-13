@@ -25,13 +25,11 @@ t_rlines	ft_readlines(int fd)
 	i = -1;
 	while (line)
 	{
-		lines[++i] = gnlxio_ft_strdup(line);
+		lines[++i] = line;
 		ft_realloc_rlines(&lines, 1);
 		if (invalid_rlines_free(&lines) == -1)
 			return (NULL);
-		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 	return (lines);
 }
